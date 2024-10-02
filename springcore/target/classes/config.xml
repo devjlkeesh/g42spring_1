@@ -11,10 +11,18 @@
             destroy-method="destroy"
             factory-method="getInstance"
             lazy-init="true"
+            scope="prototype"
     >
     </bean>
-    <bean id="userService" class="dev.jlkeesh.UserService">
-        <constructor-arg index="0" ref="userRepository"/>
+    <bean id="userService" class="dev.jlkeesh.UserService" scope="prototype">
+        <constructor-arg name="userRepository" ref="userRepository"/>
+    </bean>
+
+    <bean id="cardService" class="dev.jlkeesh.CardService">
+        <constructor-arg name="userRepository" ref="userRepository"/>
+    </bean>
+    <bean id="productService" class="dev.jlkeesh.ProductService">
+        <constructor-arg name="userRepository" ref="userRepository"/>
     </bean>
 
 

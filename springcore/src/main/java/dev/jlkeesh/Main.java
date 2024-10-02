@@ -8,19 +8,10 @@ public class Main {
                 new ClassPathXmlApplicationContext();
         context.setConfigLocation("classpath:config.xml");
         context.refresh();
-        for (String beanDefinitionName : context.getBeanDefinitionNames()) {
-            System.out.println("beanDefinitionName = " + beanDefinitionName);
-        }
-        UserRepository userRepository = context.getBean(UserRepository.class);
-//        UserRepository userRepository = (UserRepository) context.getBean("userRepository");
-//        UserRepository userRepository =  context.getBean("userRepository", UserRepository.class);
-        System.out.println("userRepository.getUser() = " + userRepository.getUser());
-          /*  for (String beanDefinitionName : context.getBeanDefinitionNames()) {
-                System.out.println("beanDefinitionName = " + beanDefinitionName);
-            }*/
         System.out.println("----------");
-        UserService userService = context.getBean(UserService.class);
-        System.out.println("userService.go() = " + userService.go());
+        System.out.println(System.identityHashCode(context.getBean(UserService.class)));
+        System.out.println(System.identityHashCode(context.getBean(UserService.class)));
+        System.out.println(System.identityHashCode(context.getBean(UserService.class)));
         context.close();
 
     }
