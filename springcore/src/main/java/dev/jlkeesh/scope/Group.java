@@ -1,5 +1,8 @@
 package dev.jlkeesh.scope;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
 public class Group {
     public Student student;
 
@@ -15,4 +18,5 @@ public class Group {
         System.out.println("this is a setter based injection " + System.identityHashCode(student));
         this.student = student;
     }
+
 }

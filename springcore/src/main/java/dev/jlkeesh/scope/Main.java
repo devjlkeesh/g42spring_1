@@ -24,6 +24,7 @@ public class Main {
         Group g2 = context.getBean(Group.class);
         System.out.println(System.identityHashCode(g2));
         System.out.println(System.identityHashCode(g2.student));
+        context.close();
 
     }
 }

@@ -11,5 +11,6 @@ public class Main {
         System.out.println(System.identityHashCode(group));
         System.out.println(group);
         System.out.println(group.student);
+        context.close();
     }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="transactionService" class="dev.jlkeesh.aop.TransactionServiceWithAopXml.TransactionService">
+    </bean>
+    <bean id="logAspect" class="dev.jlkeesh.aop.TransactionServiceWithAopXml.LogAspect"/>
+
+    <aop:config>
+        <aop:aspect ref="logAspect">
+            <aop:before
+                    pointcut="execution(* dev.jlkeesh.aop.TransactionServiceWithAopXml.TransactionService.createTransaction(..))"
+                    method="logRequest"/>
+           <!-- <aop:after
+                    pointcut="execution(* dev.jlkeesh.aop.TransactionServiceWithAopXml.TransactionService.createTransaction(..))"
+                    method="logResponse"/>-->
+            <!--            <aop:around pointcut=". . . ." method=". . . ." />-->
+            <aop:after-returning pointcut="execution(* dev.jlkeesh.aop.TransactionServiceWithAopXml.TransactionService.createTransaction(..))"
+                                 method="logResponse"/>
+            <aop:after-throwing
+                    pointcut="execution(* dev.jlkeesh.aop.TransactionServiceWithAopXml.TransactionService.createTransaction(..))"
+                    method="logError"/>
+        </aop:aspect>
+    </aop:config>
+
+
+</beans>

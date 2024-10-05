@@ -24,7 +24,7 @@
     </bean>-->
     <bean id="group"
           class="dev.jlkeesh.scope.Group"
-          scope="prototype"
+          scope="singleton"
           p:student-ref="student"
     >
 <!--        <property name="student" ref="student"/>-->
