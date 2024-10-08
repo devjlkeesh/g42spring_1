@@ -192,3 +192,7 @@ fabric.properties
 /.idea/vcs.xml
 /.idea/workspace.xml
 /.idea/git_toolbox_blame.xml
+/.idea/git_toolbox_prj.xml
+/.idea/artifacts/springmvcxml_Web_exploded.xml
+/.idea/artifacts/springwebmvcjava_Web_exploded.xml
+/springmvcxml.iml
