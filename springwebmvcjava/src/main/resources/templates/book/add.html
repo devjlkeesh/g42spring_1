@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments :: head('Books Page')">
+</head>
+<body>
+<section th:replace="fragments :: jssource">
+</section>
+<section th:replace="fragments :: navbar">
+</section>
+<div class="col-md-6 offset-3">
+    <h1>Book Add Page</h1>
+    <form method="post">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" name="title" id="title" placeholder="Well Grounded Java">
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Author</label>
+            <input type="text" class="form-control" name="author" id="author" placeholder="Javohir Elmurodov">
+        </div>
+        <div class="mb-3">
+            <label for="page_count" class="form-label">Page Count</label>
+            <input type="number" class="form-control" name="pageCount" id="page_count" placeholder="400">
+        </div>
+        <button class="btn btn-success" type="submit">Save</button>
+    </form>
+
+</div>
+</body>
+</html>

@@ -14,7 +14,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "dev.jlkeesh")
+@ComponentScan(basePackages = {"dev.jlkeesh.controller"})
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;

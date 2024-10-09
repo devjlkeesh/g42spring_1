@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head('Books Page')">
+</head>
+<body>
+<section th:replace="fragments :: jssource">
+</section>
+<section th:replace="fragments :: navbar">
+</section>
+<div class="col-md-8 offset-2">
+    <h1>Books</h1>
+    <a th:href="@{/book/add}" class="btn btn-success">add book</a>
+    <table class="table table-striped w-100">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Pages</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="book,cur : ${books}">
+            <tr>
+                <th th:text="${cur.index + 1}"></th>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.pageCount}"></td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
