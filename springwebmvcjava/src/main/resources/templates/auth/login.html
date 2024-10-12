@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments :: head('Login Page')">
+</head>
+<body>
+<section th:replace="fragments :: jssource">
+</section>
+<section th:replace="fragments :: navbar">
+</section>
+<div class="col-md-6 offset-3">
+    <h1 class="text-center">Login</h1>
+    <form method="post" th:action="@{/auth/login}">
+        <div class="mb-3">
+            <label for="username" class="form-label">username or email</label>
+            <input type="text" class="form-control" name="uname" id="username" placeholder="john">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="pwd" id="password">
+        </div>
+       <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" name="rememberMe" id="remember">
+            <label class="form-check-label" for="remember">Remember me ?</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+
+</div>
+</body>
+</html>

@@ -10,7 +10,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan("dev.jlkeesh.dao")
 public class DataSourceConfiguration {
 
 

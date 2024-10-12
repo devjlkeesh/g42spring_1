@@ -26,6 +26,10 @@
                 <td th:text="${book.title}"></td>
                 <td th:text="${book.author}"></td>
                 <td th:text="${book.pageCount}"></td>
+                <td>
+                    <a th:href="@{'/book/delete/' + ${book.id}}" class="btn btn-danger">delete</a> ||
+                    <a th:href="@{'/book/update/' + ${book.id}}" class="btn btn-warning">update</a>
+                </td>
             </tr>
         </th:block>
         </tbody>

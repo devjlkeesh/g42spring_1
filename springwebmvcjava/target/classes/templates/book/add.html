@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="fragments :: head('Books Page')">
+<head th:replace="fragments :: head(${title})">
 </head>
 <body>
 <section th:replace="fragments :: jssource">
@@ -8,19 +8,33 @@
 <section th:replace="fragments :: navbar">
 </section>
 <div class="col-md-6 offset-3">
-    <h1>Book Add Page</h1>
+    <h1 th:text="${title}"></h1>
     <form method="post">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" name="title" id="title" placeholder="Well Grounded Java">
+            <input type="text"
+                   class="form-control"
+                   name="title" id="title"
+                   placeholder="Well Grounded Java"
+                   th:value="${book.title}"
+            >
         </div>
         <div class="mb-3">
             <label for="author" class="form-label">Author</label>
-            <input type="text" class="form-control" name="author" id="author" placeholder="Javohir Elmurodov">
+            <input type="text" class="form-control"
+                   name="author"
+                   id="author"
+                   placeholder="Javohir Elmurodov"
+                   th:value="${book.author}">
         </div>
         <div class="mb-3">
             <label for="page_count" class="form-label">Page Count</label>
-            <input type="number" class="form-control" name="pageCount" id="page_count" placeholder="400">
+            <input type="number" class="form-control"
+                   name="pageCount"
+                   id="page_count"
+                   placeholder="400"
+                   th:value="${book.pageCount}"
+            >
         </div>
         <button class="btn btn-success" type="submit">Save</button>
     </form>

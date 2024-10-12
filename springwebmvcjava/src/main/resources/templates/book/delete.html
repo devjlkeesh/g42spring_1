@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments :: head('Book Add Page')">
+</head>
+<body>
+<section th:replace="fragments :: jssource">
+</section>
+<section th:replace="fragments :: navbar">
+</section>
+
+<div class="container">
+    <p th:text="${book.title}"></p>
+    <p th:text="${book.author}"></p>
+    <form method="post">
+        <h1 class="text-bg-danger">Are you sure to delete this book ?</h1>
+        <input type="submit" class="btn btn-danger" value="Yes">
+        <a th:href="@{/book}" class="btn btn-warning">Back</a>
+    </form>
+
+</div>
+
+</body>
+</html>
