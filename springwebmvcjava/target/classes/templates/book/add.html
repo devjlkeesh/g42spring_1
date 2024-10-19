@@ -9,7 +9,7 @@
 </section>
 <div class="col-md-6 offset-3">
     <h1 th:text="${title}"></h1>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input type="text"
@@ -34,6 +34,13 @@
                    id="page_count"
                    placeholder="400"
                    th:value="${book.pageCount}"
+            >
+        </div>
+        <div class="mb-3">
+            <label for="file" class="form-label">File</label>
+            <input type="file" class="form-control"
+                   name="file"
+                   id="file"
             >
         </div>
         <button class="btn btn-success" type="submit">Save</button>

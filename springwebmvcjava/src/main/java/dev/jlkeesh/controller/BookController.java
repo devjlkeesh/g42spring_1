@@ -1,14 +1,25 @@
 package dev.jlkeesh.controller;
 
-import dev.jlkeesh.BookUpdateDto;
+import dev.jlkeesh.dto.BookUpdateDto;
 import dev.jlkeesh.dao.BookDao2;
 import dev.jlkeesh.domain.Book;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
+import java.util.UUID;
 
 
 @Controller
@@ -36,9 +47,18 @@ public class BookController {
         return "book/add";
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
+    //    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
     @PostMapping("/add")
-    public String bookAdd(@ModelAttribute Book book) {
+    public String bookAdd(@ModelAttribute Book book,
+                          @RequestParam("file") MultipartFile file) throws IOException {
+        String url = "C:\\Users\\jlkeesh\\IdeaProjects\\pdp\\g42\\g42spring_1\\springwebmvcjava\\uploads";
+
+
+
+        Files.copy(
+                file.getInputStream(),
+                Path.of(url, UUID.randomUUID() +"."+ StringUtils.getFilenameExtension(file.getOriginalFilename())),
+                StandardCopyOption.REPLACE_EXISTING);
         bookDao2.save(book);
         return "redirect:/book";
     }

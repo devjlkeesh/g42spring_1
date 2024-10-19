@@ -1,6 +1,7 @@
 package dev.jlkeesh.config.security;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+/*
 
 public class SecurityWebApplicationInitializer extends AbstractSecurityWebApplicationInitializer {
     @Override
@@ -8,3 +9,4 @@ public class SecurityWebApplicationInitializer extends AbstractSecurityWebApplic
         return true;
     }
 }
+*/
