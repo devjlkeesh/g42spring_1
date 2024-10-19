@@ -5,6 +5,7 @@ import dev.jlkeesh.dto.FileShortDto;
 import dev.jlkeesh.dao.UploadDao;
 import dev.jlkeesh.domain.Upload;
 import jakarta.annotation.PostConstruct;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.PathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
