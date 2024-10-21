@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
 @Configuration
-@ControllerAdvice("dev.jlkeesh")
+//@ControllerAdvice("dev.jlkeesh")
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(EmptyResultDataAccessException.class)

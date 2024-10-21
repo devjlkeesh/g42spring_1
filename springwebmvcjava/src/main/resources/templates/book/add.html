@@ -18,6 +18,7 @@
                    placeholder="Well Grounded Java"
                    th:value="${book.title}"
             >
+            <p class="text-danger me-0" th:if="${error_title != null}" th:text="${error_title}"></p>
         </div>
         <div class="mb-3">
             <label for="author" class="form-label">Author</label>

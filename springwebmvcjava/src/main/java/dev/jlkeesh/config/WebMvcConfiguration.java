@@ -88,6 +88,8 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
         return cookieLocaleResolver;
     }
 
+
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
