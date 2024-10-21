@@ -1,11 +1,14 @@
 package dev.jlkeesh.controller;
 
-import dev.jlkeesh.dto.BookUpdateDto;
 import dev.jlkeesh.dao.BookDao2;
 import dev.jlkeesh.domain.Book;
+import dev.jlkeesh.dto.BookUpdateDto;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -54,10 +58,9 @@ public class BookController {
         String url = "C:\\Users\\jlkeesh\\IdeaProjects\\pdp\\g42\\g42spring_1\\springwebmvcjava\\uploads";
 
 
-
         Files.copy(
                 file.getInputStream(),
-                Path.of(url, UUID.randomUUID() +"."+ StringUtils.getFilenameExtension(file.getOriginalFilename())),
+                Path.of(url, UUID.randomUUID() + "." + StringUtils.getFilenameExtension(file.getOriginalFilename())),
                 StandardCopyOption.REPLACE_EXISTING);
         bookDao2.save(book);
         return "redirect:/book";
@@ -66,9 +69,32 @@ public class BookController {
     @GetMapping("/delete/{id}")
     public String bookDeletePage(Model model, @PathVariable("id") int id) {
         Book book = bookDao2.findById(id);
+        /*        Book book = null;
+        try {
+            book = bookDao2.findById(id);
+        } catch (EmptyResultDataAccessException e) {
+            e.printStackTrace();
+            throw new ResourceNotFoundException("book not found with id:" + id);
+        }*/
         model.addAttribute("book", book);
         return "book/delete";
     }
+
+/*    @ExceptionHandler(EmptyResultDataAccessException.class)
+    public ModelAndView emptyResult(HttpServletRequest req, EmptyResultDataAccessException e) {
+        String requestURI = req.getRequestURI();
+        ModelAndView modelAndView = new ModelAndView("/error/404");
+        modelAndView.addObject("error_message", "book not found: " + requestURI);
+        return modelAndView;
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ModelAndView internal(Exception e) {
+        ModelAndView modelAndView = new ModelAndView("/error/500");
+        modelAndView.addObject("error_message", "internal error");
+        return modelAndView;
+    }*/
+
 
     @PostMapping("/delete/{id}")
     public String bookDelete(@PathVariable("id") int id) {

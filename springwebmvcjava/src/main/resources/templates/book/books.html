@@ -8,7 +8,9 @@
 <section th:replace="fragments :: navbar">
 </section>
 <div class="col-md-8 offset-2">
+
     <h1>Books</h1>
+        <h1 th:if="${error_message != null}" th:text="${error_message}"></h1>
     <a th:href="@{/book/add}" class="btn btn-success">add book</a>
     <table class="table table-striped w-100">
         <thead>
@@ -20,12 +22,12 @@
         </tr>
         </thead>
         <tbody>
-        <th:block th:each="book,cur : ${books}">
+        <th:block th:each="book,cur : ${books}" th:object="${book}">
             <tr>
                 <th th:text="${cur.index + 1}"></th>
-                <td th:text="${book.title}"></td>
-                <td th:text="${book.author}"></td>
-                <td th:text="${book.pageCount}"></td>
+                <td th:text="*{title}"></td>
+                <td th:text="*{author}"></td>
+                <td th:text="*{pageCount}"></td>
                 <td>
                     <a th:href="@{'/book/delete/' + ${book.id}}" class="btn btn-danger">delete</a> ||
                     <a th:href="@{'/book/update/' + ${book.id}}" class="btn btn-warning">update</a>
