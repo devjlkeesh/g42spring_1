@@ -1,5 +1,7 @@
 package dev.jlkeesh.config;
 
+import dev.jlkeesh.config.filter.MyLogFilter;
+import jakarta.servlet.Filter;
 import jakarta.servlet.MultipartConfigElement;
 import jakarta.servlet.ServletRegistration;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -26,5 +28,12 @@ public class DispatcherInitializer extends AbstractAnnotationConfigDispatcherSer
         MultipartConfigElement multipartConfig =
                 new MultipartConfigElement("");
         registration.setMultipartConfig(multipartConfig);
+    }
+
+    @Override
+    protected Filter[] getServletFilters() {
+        return new Filter[]{
+                new MyLogFilter()
+        };
     }
 }
